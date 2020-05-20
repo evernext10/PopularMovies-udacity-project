@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:fitsSystemWindows="true">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_collapseMode="pin"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/thumbnail_image_header"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:fitsSystemWindows="true"
+                android:scaleType="fitXY"
+                app:layout_collapseMode="parallax"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/title"
+                android:layout_marginLeft="@dimen/layout_margin_left"
+                android:textColor="@android:color/black"
+                android:padding="@dimen/padding_layout"
+                android:layout_marginTop="@dimen/layout_margin_top"
+                android:textSize="30sp"
+                android:gravity="center"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/userrating"
+                android:layout_marginLeft="@dimen/layout_margin_left"
+                android:padding="@dimen/padding_layout"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/releasedate"
+                android:layout_marginLeft="@dimen/layout_margin_left"
+                android:padding="@dimen/padding_layout"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/plotsynopsis"
+                android:layout_marginLeft="@dimen/layout_margin_left"
+                android:padding="@dimen/padding_layout"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/thumbnailUrl"
+                android:visibility="invisible"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
