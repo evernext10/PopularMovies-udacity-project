@@ -1,6 +1,7 @@
 package com.appiadev.popularmovies.service;
 
 import com.appiadev.popularmovies.model.MoviesResponse;
+import com.appiadev.popularmovies.model.ReviewResponse;
 import com.appiadev.popularmovies.model.VideoResponse;
 
 import retrofit2.Call;
@@ -19,6 +20,12 @@ public interface MovieDBApi {
 
     @GET("movie/{id}/videos")
     Call<VideoResponse> getVideosByMovie(
+            @Path(value = "id", encoded = true) Integer id,
+            @Query("api_key") String apiKey
+    );
+
+    @GET("movie/{id}/reviews")
+    Call<ReviewResponse> getReviewsByMovie(
             @Path(value = "id", encoded = true) Integer id,
             @Query("api_key") String apiKey
     );

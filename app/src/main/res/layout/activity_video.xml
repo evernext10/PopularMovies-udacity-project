@@ -5,13 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.detail.video.VideoActivity">
+    tools:context=".ui.detail.videoAndReview.VideoAndReviewActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:background="@color/colorPrimary"
         app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
         android:id="@+id/toolbar"
-        app:title="Videos"
         app:titleTextColor="@android:color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

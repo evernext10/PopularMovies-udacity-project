@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import com.appiadev.popularmovies.R;
 import com.appiadev.popularmovies.model.Movie;
-import com.appiadev.popularmovies.ui.detail.video.VideoActivity;
+import com.appiadev.popularmovies.ui.detail.videoAndReview.VideoAndReviewActivity;
 import com.appiadev.popularmovies.ui.list.ItemListActivity;
 import com.bumptech.glide.Glide;
 
@@ -40,7 +40,7 @@ public class ItemDetailFragment extends Fragment {
 
     TextView nameOfMovie, plotSynopsis, userRating, releaseDate;
     ImageView imageView;
-    ImageView favorite_movie, play_videos;
+    ImageView favorite_movie, play_videos, review_videos;
     Movie movie;
 
     public ItemDetailFragment() {
@@ -64,6 +64,7 @@ public class ItemDetailFragment extends Fragment {
         releaseDate = view.findViewById(R.id.releasedate);
         favorite_movie = view.findViewById(R.id.favorite_movie);
         play_videos = view.findViewById(R.id.play_videos);
+        review_videos = view.findViewById(R.id.review_videos);
 
         Bundle bundle = getArguments();
         if(bundle.getParcelable(ARG_ITEM_ID) != null){
@@ -82,7 +83,14 @@ public class ItemDetailFragment extends Fragment {
             play_videos.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(getContext(), VideoActivity.class).putExtra("id",movie.getId()));
+                    startActivity(new Intent(getContext(), VideoAndReviewActivity.class).putExtra("id",movie.getId()).putExtra("type","video"));
+                }
+            });
+
+            review_videos.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getContext(), VideoAndReviewActivity.class).putExtra("id",movie.getId()).putExtra("type","review"));
                 }
             });
         }else{
