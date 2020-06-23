@@ -49,6 +49,7 @@ public class VideoAndReviewActivity extends AppCompatActivity {
             MovieDBApi apiService = Client.getClient().create(MovieDBApi.class);
             switch (type){
                 case "video" : {
+                    toolbar.setTitle("Video");
                     Call<VideoResponse> call = apiService.getVideosByMovie(id,Common.MOVIEDB_API_KEY);
                     call.enqueue(new Callback<VideoResponse>() {
                         @Override
@@ -65,6 +66,7 @@ public class VideoAndReviewActivity extends AppCompatActivity {
                     });
                 }break;
                 case "review" : {
+                    toolbar.setTitle("Review");
                     Call<ReviewResponse> call = apiService.getReviewsByMovie(id,Common.MOVIEDB_API_KEY);
                     call.enqueue(new Callback<ReviewResponse>() {
                         @Override
