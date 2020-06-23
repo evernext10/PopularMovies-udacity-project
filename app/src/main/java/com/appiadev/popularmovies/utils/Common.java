@@ -8,7 +8,8 @@ public class Common {
     /**
      * The constant MOVIEDB_API_KEY.
      */
-    public final static String MOVIEDB_API_KEY = "<YOUR_MOVIEDB_API_KEY>";
+    //public final static String MOVIEDB_API_KEY = "<YOUR_MOVIEDB_API_KEY>";
+    public final static String MOVIEDB_API_KEY = "0d677b16a44d2b5a79edf325bc1ee9b7";
 
     /**
      * The constant MOVIEDB_API_URL.

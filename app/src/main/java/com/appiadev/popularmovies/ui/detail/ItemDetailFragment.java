@@ -1,18 +1,17 @@
-package com.appiadev.popularmovies;
+package com.appiadev.popularmovies.ui.detail;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
+import com.appiadev.popularmovies.R;
 import com.appiadev.popularmovies.model.Movie;
+import com.appiadev.popularmovies.ui.detail.video.VideoActivity;
+import com.appiadev.popularmovies.ui.list.ItemListActivity;
 import com.bumptech.glide.Glide;
-import com.google.android.material.appbar.AppBarLayout;
-import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,9 +19,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.Toolbar;
-
-import com.appiadev.popularmovies.dummy.DummyContent;
 
 /**
  * A fragment representing a single Item detail screen.
@@ -44,6 +40,7 @@ public class ItemDetailFragment extends Fragment {
 
     TextView nameOfMovie, plotSynopsis, userRating, releaseDate;
     ImageView imageView;
+    ImageView favorite_movie, play_videos;
     Movie movie;
 
     public ItemDetailFragment() {
@@ -65,6 +62,8 @@ public class ItemDetailFragment extends Fragment {
         plotSynopsis = view.findViewById(R.id.plotsynopsis);
         userRating = view.findViewById(R.id.userrating);
         releaseDate = view.findViewById(R.id.releasedate);
+        favorite_movie = view.findViewById(R.id.favorite_movie);
+        play_videos = view.findViewById(R.id.play_videos);
 
         Bundle bundle = getArguments();
         if(bundle.getParcelable(ARG_ITEM_ID) != null){
@@ -79,6 +78,13 @@ public class ItemDetailFragment extends Fragment {
             plotSynopsis.setText("Synopsis: "+movie.getOverview());
             userRating.setText("Rating: "+ movie.getVoteAverage());
             releaseDate.setText("Date: "+ movie.getReleaseDate());
+
+            play_videos.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getContext(), VideoActivity.class).putExtra("id",movie.getId()));
+                }
+            });
         }else{
             Toast.makeText(getContext(), "No API Data", Toast.LENGTH_SHORT).show();
         }

@@ -1,13 +1,11 @@
-package com.appiadev.popularmovies;
+package com.appiadev.popularmovies.ui.list;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -20,11 +18,13 @@ import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.appiadev.popularmovies.R;
 import com.appiadev.popularmovies.adapter.MoviesAdapter;
 import com.appiadev.popularmovies.model.Movie;
 import com.appiadev.popularmovies.model.MoviesResponse;
 import com.appiadev.popularmovies.service.MovieDBApi;
 import com.appiadev.popularmovies.service.RetrofitClient;
+import com.appiadev.popularmovies.ui.detail.ItemDetailActivity;
 import com.appiadev.popularmovies.utils.Common;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
@@ -173,9 +173,7 @@ public class ItemListActivity extends AppCompatActivity implements SharedPrefere
                         Log.d("Error", t.getMessage());
                     }
                 });
-            }else{
             }
-
         }catch (Exception e){
             Log.d("Error", e.getMessage());
             Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();

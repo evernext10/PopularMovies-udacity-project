@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.appiadev.popularmovies.ItemDetailActivity;
+import com.appiadev.popularmovies.ui.detail.ItemDetailActivity;
 import com.appiadev.popularmovies.R;
 import com.appiadev.popularmovies.model.Movie;
 import com.bumptech.glide.Glide;

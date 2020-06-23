@@ -1,15 +1,13 @@
-package com.appiadev.popularmovies;
+package com.appiadev.popularmovies.ui.detail;
 
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.appiadev.popularmovies.R;
 import com.appiadev.popularmovies.model.Movie;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
+import com.appiadev.popularmovies.ui.list.ItemListActivity;
 
 import androidx.appcompat.widget.Toolbar;
-
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.ActionBar;
