@@ -83,14 +83,14 @@ public class ItemDetailFragment extends Fragment {
             play_videos.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(getContext(), VideoAndReviewActivity.class).putExtra("id",movie.getId()).putExtra("type","video"));
+                    startActivity(new Intent(getContext(), VideoAndReviewActivity.class).putExtra("id",movie.getMovieId()).putExtra("type","video"));
                 }
             });
 
             review_videos.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    startActivity(new Intent(getContext(), VideoAndReviewActivity.class).putExtra("id",movie.getId()).putExtra("type","review"));
+                    startActivity(new Intent(getContext(), VideoAndReviewActivity.class).putExtra("id",movie.getMovieId()).putExtra("type","review"));
                 }
             });
         }else{

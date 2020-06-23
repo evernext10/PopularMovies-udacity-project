@@ -163,7 +163,6 @@ public class ItemListActivity extends AppCompatActivity implements SharedPrefere
                     @Override
                     public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
                         List<Movie> movies = response.body().getResults();
-                        Collections.sort(movies, Movie.BY_NAME_ALPHABETICAL);
                         recyclerView.setAdapter(new MoviesAdapter(getApplicationContext(), movies));
                         recyclerView.smoothScrollToPosition(0);
                     }
