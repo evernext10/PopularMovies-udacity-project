@@ -8,8 +8,7 @@ public class Common {
     /**
      * The constant MOVIEDB_API_KEY.
      */
-    //public final static String MOVIEDB_API_KEY = "<YOUR_MOVIEDB_API_KEY>";
-    public final static String MOVIEDB_API_KEY = "0d677b16a44d2b5a79edf325bc1ee9b7";
+    public final static String MOVIEDB_API_KEY = "<YOUR_MOVIEDB_API_KEY>";
 
     public static final String MOVIES_LIST = "MOVIES_LIST";
     public static final String RECYCLER_VIEW_LAYOUT_MANAGER_STATE = "RECYCLER_VIEW_LAYOUT_MANAGER_STATE";
