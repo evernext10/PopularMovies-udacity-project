@@ -94,6 +94,7 @@ public class ItemDetailFragment extends Fragment {
             movieId = movie.getMovieId();
             recyclerTrailers.setLayoutManager(new LinearLayoutManager(requireContext()));
             recyclerReviews.setLayoutManager(new LinearLayoutManager(requireContext()));
+            favorite_movie.setOnClickListener(v -> onFavButtonClicked());
             setAdditionalInformation();
             String poster = "https://image.tmdb.org/t/p/w500" + movie.getPosterPath();
             AppExecutors.getExecutorInstance().getDiskIO().execute(() -> {
@@ -118,6 +119,26 @@ public class ItemDetailFragment extends Fragment {
         }else{
             Toast.makeText(getContext(), "No API Data", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void onFavButtonClicked() {
+        AppExecutors.getExecutorInstance().getDiskIO().execute(() -> {
+            boolean isFavorite = viewModel.isFavorite(movieId);
+            if (isFavorite) {
+                viewModel.removeMovieFromFavorites(movie);
+                requireActivity().runOnUiThread(() -> {
+                    favorite_movie.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_favorite_unselected));
+                    Toast.makeText(requireContext(), "App remove from Favorites", Toast.LENGTH_SHORT).show();
+                });
+            } else {
+                viewModel.addMovieToFavorites(movie);
+                requireActivity().runOnUiThread(() -> {
+                    Toast.makeText(requireContext(), "App added to Favorites", Toast.LENGTH_SHORT).show();
+                    favorite_movie.setImageDrawable(ContextCompat.getDrawable(requireContext(), R.drawable.ic_favorite_black_24dp));
+                });
+            }
+            viewModel.updatFavoriteMovie(movieId, !isFavorite);
+        });
     }
 
     private void setAdditionalInformation() {

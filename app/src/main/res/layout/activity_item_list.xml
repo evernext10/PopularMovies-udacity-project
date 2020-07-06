@@ -88,6 +88,14 @@
             android:src="@drawable/ic_view_carousel_black_24dp"
             fab:fab_label="Voto promedio"
             fab:fab_size="mini" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_favorite_black_24dp"
+            fab:fab_label="Favoritas"
+            fab:fab_size="mini" />
     </com.github.clans.fab.FloatingActionMenu>
 
 

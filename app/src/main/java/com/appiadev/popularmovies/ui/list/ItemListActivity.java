@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -61,7 +62,7 @@ public class ItemListActivity extends AppCompatActivity implements SharedPrefere
     private AppCompatActivity activity = ItemListActivity.this;
     public static final String LOG_TAG = MoviesAdapter.class.getName();
     private FloatingActionMenu fab_menu;
-    FloatingActionButton fab_most, fab_vote;
+    FloatingActionButton fab_most, fab_vote, fab_favorite;
     RecyclerView recyclerView;
     private MoviesAdapter adapter;
 
@@ -96,38 +97,35 @@ public class ItemListActivity extends AppCompatActivity implements SharedPrefere
         fab_menu = findViewById(R.id.fab_menu);
         fab_most = findViewById(R.id.fab_mas_popular);
         fab_vote = findViewById(R.id.fab_voto_promedio);
+        fab_favorite = findViewById(R.id.fab_favorite);
 
-        fab_most.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                String sortOrder = preferences.getString(
-                        getString(R.string.pref_sort_order_key),
-                        getString(R.string.pref_most_popular)
-                );
+        fab_most.setOnClickListener(view -> {
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            String sortOrder = preferences.getString(
+                    getString(R.string.pref_sort_order_key),
+                    getString(R.string.pref_most_popular)
+            );
 
-                Log.d(LOG_TAG, "Sorting by most popular");
-                loadJSON(TYPE_BUT_POPULATE);
+            Log.d(LOG_TAG, "Sorting by most popular");
+            loadJSON(TYPE_BUT_POPULATE);
 
-            }
         });
 
-        fab_vote.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                String sortOrder = preferences.getString(
-                        getString(R.string.pref_sort_order_key),
-                        getString(R.string.pref_most_popular)
-                );
+        fab_vote.setOnClickListener(view -> {
+            SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            String sortOrder = preferences.getString(
+                    getString(R.string.pref_sort_order_key),
+                    getString(R.string.pref_most_popular)
+            );
 
-                Log.d(LOG_TAG, "Sorting by vote average");
-                loadJSON(TYPE_AVERAGE_VOTE);
+            Log.d(LOG_TAG, "Sorting by vote average");
+            loadJSON(TYPE_AVERAGE_VOTE);
 
-            }
         });
 
-
+        fab_favorite.setOnClickListener(view -> {
+            startActivity(new Intent(this,FavoriteListActivity.class));
+        });
         if (getActivity().getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT){
             recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         } else {
